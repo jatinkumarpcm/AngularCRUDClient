@@ -1,0 +1,99 @@
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     [ngClass]="isOpenModalClicked ? 'show' : ''"
+     [ngStyle]="isOpenModalClicked ? {'display': 'block'} : {'display': 'none'}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Contact</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">-->
+
+
+        <!--<div></div>-->
+        <!--<div></div>-->
+
+      <!--</div>
+    </div>
+  </div>
+</div>-->
+
+
+
+
+
+
+
+
+
+<div class="container" style="align-content:center">
+
+  <form [formGroup]="EditContactForm">
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label>FirstName</label>
+          <input type="text"
+                 formControlName="firstname"
+                 class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }" />
+          <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
+            <div *ngIf="f['firstname'].errors['required']">FirstName is required</div>
+            <div *ngIf="f['firstname'].errors['pattern']">Enter only aplhabhets</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="row">
+      <div class="col-6">
+
+        <div class="form-group">
+          <label>lastname</label>
+          <input type="text"
+                 formControlName="lastname"
+                 class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f['lastname'].errors }" />
+          <div *ngIf="submitted && f['lastname'].errors" class="invalid-feedback">
+            <div *ngIf="f['lastname'].errors['required']">lastname is required</div>
+            <div *ngIf="f['lastname'].errors['pattern']">Enter only aplhabhets</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text"
+                 formControlName="email"
+                 class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">Email is required</div>
+            <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+      <div class="col-6">
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+    <div>
+      <span [ngClass]="{ 'is-invalid': submitted && EditContactForm.invalid }" *ngIf=" submitted && EditContactForm.invalid"> {{msg}}</span>
+      <span *ngIf="submitted && EditContactForm.valid">{{msg}}</span>
+    </div>
+
+  </form>
+</div>

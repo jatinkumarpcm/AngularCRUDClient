@@ -1,0 +1,60 @@
+
+
+
+<div class="container">
+  <button type="button" class="btn btn-success" (click)="AddContactEvent()">New</button>
+  <br />
+  <br />
+  <table class="row">
+    <tr class="row">
+      <td class="col-2"><strong>ID</strong></td>
+      <td class="col-2"><strong>FirstName</strong></td>
+      <td class="col-2"><strong>LastName</strong></td>
+      <td class="col-2"><strong>Email</strong></td>
+      <td class="col-2"><strong>Edit</strong></td>
+      <td class="col-2"><strong>Delete</strong></td>
+    </tr>
+    <br />
+    <tr *ngFor="let contact of contactlist" class="row">
+      <td class="col-2"><strong>{{contact.id}}</strong></td>
+      <td class="col-2"><strong>{{contact.firstname}}</strong></td>
+      <td class="col-2"><strong>{{contact.lastname}}</strong></td>
+      <td class="col-2"><strong>{{contact.email}}</strong></td>
+      <td class="col-2">
+        <button type="button" class="btn btn-primary" (click)="onedit(contact)">
+          Edit
+        </button>
+      </td>
+      <td class="col-2">
+        <button type="button" class="btn btn-danger" (click)="ondelete(contact)">
+          Delete
+        </button>
+      </td>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+           [ngClass]="isOpenModalClicked ? 'show' : ''"
+           [ngStyle]="isOpenModalClicked ? {'display': 'block'} : {'display': 'none'}" *ngIf="isOpenModalClicked">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Contact</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+                <span aria-hidden="true" align="right">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <app-edit [item]="contactDetails" (ItemEvent)="closeModal($event)"></app-edit>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </tr>
+  </table>
+
+  <div>
+    {{msg}}
+  </div>
+</div>
+
+
