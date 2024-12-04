@@ -1,0 +1,80 @@
+
+<h1 style="text-align: center;"> Add User Contact</h1>
+
+<div class="container">
+
+  <form [formGroup]="AddContactForm">
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label>FirstName</label>
+          <input type="text"
+                 formControlName="firstname"
+                 class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }" />
+          <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
+            <div *ngIf="f['firstname'].errors['required']">FirstName is required</div>
+            <div *ngIf="f['firstname'].errors['pattern']">Enter only aplhabhets</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="row">
+      <div class="col-6">
+
+        <div class="form-group">
+          <label>lastname</label>
+          <input type="text"
+                 formControlName="lastname"
+                 class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f['lastname'].errors }" />
+          <div *ngIf="submitted && f['lastname'].errors" class="invalid-feedback">
+            <div *ngIf="f['lastname'].errors['required']">lastname is required</div>
+            <div *ngIf="f['lastname'].errors['pattern']">Enter only aplhabhets</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text"
+                 formControlName="email"
+                 class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">Email is required</div>
+            <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+
+      <div class="col-4">
+        <button type="button" class="btn btn-link" (click)="BacktoContactPage()">BacktoContactPage</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col">
+        <span *ngIf="submitted && AddContactForm.valid">{{msg}}</span>
+      </div>
+    
+    </div>
+
+  </form>
+</div>
